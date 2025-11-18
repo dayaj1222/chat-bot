@@ -1,8 +1,14 @@
-// src-tauri/src/lib.rs
+mod utils;
+use utils::task_manager::{Task, write_task, read_tasks};
 
 #[tauri::command]
-fn reply() -> String {
-    "Hello World!".into()
+fn save_task(task: Task) -> Result<(), String> {
+    write_task(task).map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn view_tasks() -> Result<Vec<Task>, String> {
+    read_tasks().map_err(|e| e.to_string())
 }
 
 pub fn run() {
@@ -17,7 +23,7 @@ pub fn run() {
             }
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![reply])
+        .invoke_handler(tauri::generate_handler![save_task, view_tasks])
         .run(tauri::generate_context!())
         .expect("error while running Tauri application");
 }

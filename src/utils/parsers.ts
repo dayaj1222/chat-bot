@@ -1,11 +1,30 @@
 import type { Message, Response } from "../types.ts";
 
 export function parseResponse(response: string): Response {
-    const index = response.indexOf("!@#$");
-    if (index === -1) return { message: response };
+    const startTag = "<COMMAND>";
+    const endTag = "</COMMAND>";
+
+    const startIndex = response.indexOf(startTag);
+    const endIndex = response.indexOf(endTag);
+
+    if (startIndex === -1 || endIndex === -1 || endIndex <= startIndex) {
+        return { message: response.trim(), command: undefined };
+    }
+
+    const commandStr = response
+        .slice(startIndex + startTag.length, endIndex)
+        .trim();
+
+    let commandObj: Response["command"];
+    try {
+        commandObj = JSON.parse(commandStr);
+    } catch {
+        commandObj = undefined;
+    }
+
     return {
-        message: response.slice(0, index).trim(),
-        command: response.slice(index + 4).trim(),
+        message: response.slice(0, startIndex).trim(),
+        command: commandObj,
     };
 }
 

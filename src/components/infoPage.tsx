@@ -1,10 +1,8 @@
 import { X } from "lucide-react";
 import type React from "react";
-
 type Prop = {
   setShowInfo: React.Dispatch<React.SetStateAction<boolean>>;
 };
-
 export default function InfoPage({ setShowInfo }: Prop) {
   return (
     <div className="fixed inset-0 backdrop-blur-md flex justify-center items-center z-50">
@@ -44,6 +42,22 @@ export default function InfoPage({ setShowInfo }: Prop) {
             <li>
               <code className="text-[#f9e2af]">/clear</code> - Clear all
               messages
+            </li>
+            <li>
+              <code className="text-[#f9e2af]">/summarize</code> - Summarize the
+              conversation so far
+            </li>
+            <li>
+              <code className="text-[#f9e2af]">/eli5</code> - Explain the last
+              response like I'm 5
+            </li>
+            <li>
+              <code className="text-[#f9e2af]">/detailed</code> - Get a more
+              detailed response
+            </li>
+            <li>
+              <code className="text-[#f9e2af]">/tldr</code> - Get an ultra-short
+              response
             </li>
           </ul>
           <p className="text-sm text-[#a6adc8] pt-2">

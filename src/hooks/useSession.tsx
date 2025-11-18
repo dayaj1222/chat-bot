@@ -16,19 +16,31 @@ type Props = {
 };
 
 export function SessionProvider({ children }: Props) {
-  let [messages, setMessages] = useState<Message[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [messages, setMessages] = useState<Message[]>(() => {
+    // Load messages from localStorage on initial mount
+    const stored = localStorage.getItem("messages");
+    return stored ? JSON.parse(stored) : [];
+  });
+  const [loading, setLoading] = useState(false);
 
+  // Save messages to localStorage whenever they change
   useEffect(() => {
-    const sortMessages = () => {
-      messages = messages.sort((a, b) => a.timestamp - b.timestamp);
-    };
-    sortMessages();
+    localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
+
+  // Wrapper to automatically sort messages when they're updated
+  const setSortedMessages: React.Dispatch<React.SetStateAction<Message[]>> = (
+    action,
+  ) => {
+    setMessages((prev) => {
+      const newMessages = typeof action === "function" ? action(prev) : action;
+      return [...newMessages].sort((a, b) => a.timestamp - b.timestamp);
+    });
+  };
 
   return (
     <SessionContext.Provider
-      value={{ messages, setMessages, loading, setLoading }}
+      value={{ messages, setMessages: setSortedMessages, loading, setLoading }}
     >
       {children}
     </SessionContext.Provider>

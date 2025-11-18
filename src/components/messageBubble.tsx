@@ -1,4 +1,5 @@
 import type { Message } from "../types.ts";
+import ReactMarkdown from "react-markdown";
 
 type MessageBubbleType = {
   message?: Message;
@@ -13,7 +14,23 @@ export function MessageBubble({ message }: MessageBubbleType) {
           : "ml-auto bg-[#585b70]"
       }`}
     >
-      {message?.message}
+      <ReactMarkdown
+        components={{
+          p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+          strong: ({ children }) => (
+            <strong className="font-bold">{children}</strong>
+          ),
+          ul: ({ children }) => (
+            <ul className="list-disc ml-4 mb-2">{children}</ul>
+          ),
+          ol: ({ children }) => (
+            <ol className="list-decimal ml-4 mb-2">{children}</ol>
+          ),
+          li: ({ children }) => <li className="mb-1">{children}</li>,
+        }}
+      >
+        {message?.message || ""}
+      </ReactMarkdown>
     </div>
   );
 }
