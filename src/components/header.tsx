@@ -2,7 +2,7 @@ import { Info } from "lucide-react";
 import { useState } from "react";
 import InfoPage from "../components/infoPage.tsx";
 
-function Header({ name = "Agent" }) {
+function Header({ name = "Nyx" }) {
   const [showInfo, setShowInfo] = useState(false);
 
   return (
