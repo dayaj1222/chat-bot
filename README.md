@@ -24,7 +24,7 @@ A modern desktop AI chat application built with Tauri, featuring task management
 
 <!-- Add your screenshots here -->
 ![Main Chat Interface](./screenshots/chat.png)
-![Task Management](./screenshots/tasks.png)
+![Task Management](./screenshots/task-manager.png)
 ![Weather Feature](./screenshots/weather.png)
 
 ## 💬 Available Commands
