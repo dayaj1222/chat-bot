@@ -18,50 +18,45 @@ export default function InfoPage({ setShowInfo }: Prop) {
         </div>
         <div className="text-[#cdd6f4] space-y-3">
           <p className="text-sm">
-            <strong className="text-[#89b4fa]">Version:</strong> 1.0.0
-          </p>
-          <p className="text-sm">
-            <strong className="text-[#89b4fa]">Description:</strong> An
-            intelligent AI chat assistant powered by advanced language models.
-          </p>
-          <p className="text-sm">
-            <strong className="text-[#89b4fa]">Features:</strong>
-          </p>
-          <ul className="text-sm list-disc list-inside ml-2 space-y-1">
-            <li>Real-time conversational AI</li>
-            <li>Beautiful Catppuccin Mocha theme</li>
-            <li>Context-aware conversations (remembers last 10 messages)</li>
-            <li>Command execution support</li>
-            <li>Message history management</li>
-            <li>Smooth animations & auto-scroll</li>
-          </ul>
+            <strong className="text-[#89b4fa]">Description:</strong> An AI chat
+            assistant with task management and weather features.
+          </p>{" "}
           <p className="text-sm">
             <strong className="text-[#89b4fa]">Available Commands:</strong>
           </p>
           <ul className="text-sm list-disc list-inside ml-2 space-y-1">
             <li>
-              <code className="text-[#f9e2af]">/clear</code> - Clear all
-              messages
+              <code className="text-[#f9e2af]">/clear</code> - Clear message
+              history.
             </li>
             <li>
-              <code className="text-[#f9e2af]">/summarize</code> - Summarize the
-              conversation so far
+              <code className="text-[#f9e2af]">/concise</code> - Explain the
+              last message in short.
             </li>
             <li>
-              <code className="text-[#f9e2af]">/eli5</code> - Explain the last
-              response like I'm 5
+              <code className="text-[#f9e2af]">/Explain</code> - Explain the
+              last message in details.
+            </li>
+
+            <li>
+              <code className="text-[#f9e2af]">/task &lt;description&gt;</code>{" "}
+              - Add a new task
             </li>
             <li>
-              <code className="text-[#f9e2af]">/detailed</code> - Get a more
-              detailed response
+              <code className="text-[#f9e2af]">/get-tasks</code> - View all
+              tasks
             </li>
             <li>
-              <code className="text-[#f9e2af]">/tldr</code> - Get an ultra-short
-              response
+              <code className="text-[#f9e2af]">/clear-task</code> - Delete all
+              tasks
+            </li>
+            <li>
+              <code className="text-[#f9e2af]">/weather &lt;city&gt;</code> -
+              Get weather for a city
             </li>
           </ul>
           <p className="text-sm text-[#a6adc8] pt-2">
-            Made with ❤ using React and TypeScript
+            Built with Tauri, React & Rust
           </p>
         </div>
       </div>

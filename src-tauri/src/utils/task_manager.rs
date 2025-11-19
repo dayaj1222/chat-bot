@@ -1,8 +1,9 @@
 use serde::{Deserialize, Serialize};
-use anyhow::Result;
+use anyhow::{Ok, Result};
 use std::path::PathBuf;
 use std::fs::File;
 use std::io::{Read, Write};
+
 
 #[derive(Serialize, Deserialize, Clone)]
 pub struct Task {
@@ -61,5 +62,10 @@ pub fn write_task(mut task: Task) -> Result<()> {
     let json = serde_json::to_string_pretty(&tasks)?;
     file.write_all(json.as_bytes())?;
     println!("[DEBUG] Task saved successfully to: {:?}", path);
+    Ok(())
+}
+
+pub fn delete_tasks()->Result<()>{
+    create_file()?;
     Ok(())
 }

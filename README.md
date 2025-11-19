@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# AI Chat Assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern desktop AI chat application built with Tauri, featuring task management and real-time weather integration.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **🤖 AI-Powered Chat** - Intelligent conversational assistant with context awareness
+- **📝 Task Management** - Create, view, and manage tasks directly from chat
+- **🌤️ Weather Integration** - Real-time weather data for any city worldwide
+- **🎨 Beautiful UI** - Catppuccin Mocha theme with smooth animations
+- **📱 Responsive Design** - Optimized for various screen sizes
+- **⚡ Fast & Lightweight** - Built with Rust backend for optimal performance
+- **💾 Persistent Storage** - Tasks saved locally with JSON file system
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Backend:** Rust, Tauri
+- **APIs:** Open-Meteo (Weather), Claude AI
+- **HTTP Client:** reqwest
+- **Serialization:** serde
 
-## Expanding the ESLint configuration
+## 📸 Screenshots
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<!-- Add your screenshots here -->
+![Main Chat Interface](./screenshots/chat.png)
+![Task Management](./screenshots/tasks.png)
+![Weather Feature](./screenshots/weather.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 💬 Available Commands
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Command | Description |
+|---------|-------------|
+| `/clear` | Clear message history |
+| `/concise` | Get a brief explanation of the last message |
+| `/explain` | Get a detailed explanation of the last message |
+| `/task <description>` | Add a new task |
+| `/get-tasks` | View all saved tasks |
+| `/clear-task` | Delete all tasks |
+| `/weather <city>` | Get current weather for a city |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🏗️ Project Structure
+
+```
+ai-chatbot/
+├── src/                      # Frontend (React + TypeScript)
+│   ├── components/           # React components
+│   ├── utils/                # Utility functions
+│   └── main.tsx              # Entry point
+├── src-tauri/                # Backend (Rust + Tauri)
+│   ├── src/
+│   │   ├── capabilities/     # Tauri capabilities
+│   │   ├── utils/
+│   │   │   ├── task_manager.rs   # Task CRUD operations
+│   │   │   └── weather.rs        # Weather API integration
+│   │   ├── lib.rs            # Library exports
+│   │   └── main.rs           # Tauri entry point
+│   ├── icons/                # App icons
+│   ├── Cargo.toml            # Rust dependencies
+│   └── tauri.conf.json       # Tauri configuration
+├── public/                   # Static assets
+├── package.json              # Node dependencies
+└── README.md                 # Documentation
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔑 Key Highlights
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Type-Safe** - Full TypeScript support with strict typing
+- **Async Operations** - Non-blocking weather and API calls
+- **Command Pattern** - Extensible command system for easy feature additions
+- **Error Handling** - Comprehensive error management across frontend and backend
+- **Modern UI/UX** - Lucide icons, smooth transitions, and intuitive design
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📝 License
+
+MIT
+
+---
+
+Built with ❤️ using Tauri, React & Rust
